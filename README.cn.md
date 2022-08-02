@@ -1,3 +1,21 @@
+## “e900v22c的u-boot + u200的dtb”组合可以从emmc启动、可以正确识别出网卡、内存、声卡
+还剩下蓝牙估计也不难解决了。
+
+具体就是：不写bootloader、Armbian_22.08.0_Aml_s905l3a_bullseye_5.4.207镜像（应该所有版本的镜像都可以）。
+
+步骤：
+
+写U盘，uEnv.txt里改成u200的dtb（必选）、把e900v22c的u-boot复制为u-boot.ext（可选），然后U盘开机。
+
+emmc里是安卓固件的前提下，用armbian-install no写emmc，用e900v22c的u-boot+u200的dtb组合
+
+然后装载emmc的boot分区，把e900v22c的u-boot复制为u-boot.emmc即可（否则可以启动但网卡识别不到、内存也只能识别一半）。
+
+终于可以在emmc里愉快的玩耍了，省出来一个宝贵的USB口！
+
+当然，这个组合可能只适合我手上的这款盒子，其他的也只能参考，多试几种uboot/dtb组合，总能找到一个合适的。
+
+以下为ophub原文：
 # Armbian for Amlogic TV Boxes / 晶晨·岸边
 
 查看英文说明 | [View English description](README.md)
