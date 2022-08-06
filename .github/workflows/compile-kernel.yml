@@ -12,15 +12,15 @@ on:
       kernel_repo:
         description: "Choose to compile kernel sources"
         required: false
-        default: "unifreq"
+        default: "xcray"
         type: choice
         options:
-          - unifreq
+          - xcray
           - kernel.org
       kernel_version:
         description: "Select kernel version"
         required: false
-        default: "5.10.125_5.15.50"
+        default: "5.18.15"
         type: choice
         options:
           - 5.4.200_5.10.125
@@ -39,14 +39,14 @@ on:
       kernel_sign:
         description: "Set the kernel custom signature"
         required: false
-        default: "-ophub"
+        default: "-xcray"
       kernel_config:
         description: "Set the path of kernel .config"
         required: false
         default: ""
 
 env:
-  TZ: America/New_York
+  TZ: Asia/Shanghai
 
 jobs:
   build:
@@ -70,7 +70,7 @@ jobs:
           echo "COMPILE_STARTINGTIME=$(date +"%m.%d.%H%M")" >> $GITHUB_ENV
 
       - name: Compile the kernel for Amlogic s9xxx
-        uses: ophub/amlogic-s9xxx-armbian@main
+        uses: xcray/amlogic-s905l3a-armbian@main
         with:
           build_target: kernel
           kernel_repo: ${{ github.event.inputs.kernel_repo }}
