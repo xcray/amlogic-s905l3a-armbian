@@ -12,15 +12,16 @@ on:
       kernel_repo:
         description: "Choose to compile kernel sources"
         required: false
-        default: "unifreq"
+        default: "xcray"
         type: choice
         options:
           - unifreq
           - kernel.org
+          - xcray
       kernel_version:
         description: "Select kernel version"
         required: false
-        default: "5.10.125_5.15.50"
+        default: "5.18.15"
         type: choice
         options:
           - 5.4.200_5.10.125
@@ -39,14 +40,14 @@ on:
       kernel_sign:
         description: "Set the kernel custom signature"
         required: false
-        default: "-ophub"
+        default: "-xcray"
       kernel_config:
         description: "Set the path of kernel .config"
         required: false
         default: ""
 
 env:
-  TZ: America/New_York
+  TZ: Asia/Shanghai
 
 jobs:
   build:
